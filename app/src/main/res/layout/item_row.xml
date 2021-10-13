@@ -19,11 +19,11 @@
             android:contentDescription="@string/app_name" />
 
         <TextView
-            android:justificationMode="inter_word"
             android:id="@+id/tvTitle"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:text="Question"
+            android:gravity="fill_horizontal"
             android:textColor="#d78c3b"
             android:layout_gravity="center"
             android:layout_marginLeft="25dp"
