@@ -41,12 +41,14 @@ class RecyclerViewAdapter ( val details: ArrayList<Details>) :
                 dialogView.tvUpdate.text=data.updated
                 dialogView.tvSummary.text=Html.fromHtml(Html.fromHtml(data.summary).toString())
                dialogView.tvSummary.visibility=View.GONE
-
+                dialogView.scrollable.visibility=View.GONE
                 dialogView.ivSummary.setOnClickListener {
                     if(dialogView.tvSummary.visibility==View.VISIBLE){
                         dialogView.tvSummary.visibility=View.GONE
+                        dialogView.scrollable.visibility=View.GONE
                     }else{
                         dialogView.tvSummary.visibility=View.VISIBLE
+                        dialogView.scrollable.visibility=View.VISIBLE
                     }
                 }
 
