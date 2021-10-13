@@ -1,12 +1,15 @@
 package com.example.rssfeedpractice
 
 import android.app.AlertDialog
+import android.app.Dialog
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.dialogue_view.view.*
 import kotlinx.android.synthetic.main.item_row.view.*
+import kotlinx.android.synthetic.main.item_row.view.tvTitle
 
 class RecyclerViewAdapter ( val details: ArrayList<Details>) :
     RecyclerView.Adapter<RecyclerViewAdapter.ItemViewHolder>() {
@@ -29,28 +32,32 @@ class RecyclerViewAdapter ( val details: ArrayList<Details>) :
             tvTitle.text = data.title
             tvTitle.setOnClickListener{
                 val builder = AlertDialog.Builder(context)
-                //set title for alert dialog
-                builder.setTitle("More Details")
-                //set message for alert dialog
-               var summary= Html.fromHtml(Html.fromHtml(data.summary).toString())
-                builder.setMessage("Title:${data.title}\n\n\n" +
-                                    "Author:${data.author}\n\n\n"+
-                                     "Rank:${data.rank}\n\n\n" +
-                                    "Published:${data.published}\n\n\n"+
-                                     "Updated:${data.updated}\n\n\n"+
-                                    "summary:$summary\n\n\n")
-                builder.setIcon(android.R.drawable.ic_dialog_alert)
+                val dialogView = LayoutInflater.from(context).inflate(R.layout.dialogue_view, null)
+                builder.setView(dialogView)
+                dialogView.tvTitle.text=data.title
+                dialogView.tvAuthor.text=data.author
+                dialogView.tvRank.text=data.rank.toString()
+                dialogView.tvPublish.text=data.published
+                dialogView.tvUpdate.text=data.updated
+                dialogView.tvSummary.text=Html.fromHtml(Html.fromHtml(data.summary).toString())
+               dialogView.tvSummary.visibility=View.GONE
 
-
-                //performing negative action
-                builder.setNegativeButton("Close"){dialogInterface, which ->
-                    dialogInterface.cancel()
+                dialogView.ivSummary.setOnClickListener {
+                    if(dialogView.tvSummary.visibility==View.VISIBLE){
+                        dialogView.tvSummary.visibility=View.GONE
+                    }else{
+                        dialogView.tvSummary.visibility=View.VISIBLE
+                    }
                 }
+
                 // Create the AlertDialog
                 val alertDialog: AlertDialog = builder.create()
                 // Set other dialog properties
                 alertDialog.setCancelable(false)
                 alertDialog.show()
+                dialogView.ivClose.setOnClickListener{
+                    alertDialog.dismiss()
+                }
             }
         }
     }

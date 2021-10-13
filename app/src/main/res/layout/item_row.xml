@@ -3,14 +3,37 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/tvTitle"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Title"
-        android:layout_margin="20dp"
-        android:textSize="24dp"
-        android:background="@color/teal_200"
-        />
+        android:backgroundTint="#ededec"
+        android:layout_margin="10dp"
+        >
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left|center"
+            android:src="@drawable/question"
+            android:layout_margin="10dp"
+            android:id="@+id/img"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:justificationMode="inter_word"
+            android:id="@+id/tvTitle"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:text="Question"
+            android:textColor="#d78c3b"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="20sp"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            />
+    </androidx.cardview.widget.CardView>
+
 
 </LinearLayout>

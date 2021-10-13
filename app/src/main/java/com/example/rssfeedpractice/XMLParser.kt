@@ -13,11 +13,11 @@ class XMLParser {
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false)
             parser.setInput(inputStream, null)
             parser.nextTag()
-            return readSongsRssFeed(parser)
+            return readQuestionsRssFeed(parser)
         }
     }
 
-    private fun readSongsRssFeed(parser: XmlPullParser): ArrayList<Details> {
+    private fun readQuestionsRssFeed(parser: XmlPullParser): ArrayList<Details> {
 
         val qDetails = ArrayList<Details>()
 
@@ -49,7 +49,6 @@ class XMLParser {
                         "summary" -> summary = readTag(parser,"summary")
                         "author" -> {
                             parser.require(XmlPullParser.START_TAG, ns, "author")
-                            var name:String?=null
                             while (parser.next() != XmlPullParser.END_TAG)
                             {
                                 if (parser.eventType != XmlPullParser.START_TAG) {

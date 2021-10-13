@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Latifah/Desktop/Coding dojo/RSSFeedPractice/app/src/main/res/drawable/round_layout.xml" value="0.2222222222222222" />
         <entry key="..\:/Users/Latifah/Desktop/Coding dojo/RSSFeedPractice/app/src/main/res/layout/activity_main.xml" value="0.20625" />
+        <entry key="..\:/Users/Latifah/Desktop/Coding dojo/RSSFeedPractice/app/src/main/res/layout/dialogue_view.xml" value="0.264" />
         <entry key="..\:/Users/Latifah/Desktop/Coding dojo/RSSFeedPractice/app/src/main/res/layout/item_row.xml" value="0.2234375" />
+        <entry key="..\:/Users/Latifah/Desktop/Coding dojo/RSSFeedPractice/app/src/main/res/layout/round_layout.xml" value="0.2234375" />
         <entry key="..\:/Users/Latifah/Desktop/Coding dojo/RSSFeedPractice/app/src/main/res/menu/main_menu.xml" value="0.2234375" />
       </map>
     </option>
