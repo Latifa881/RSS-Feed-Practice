@@ -37,11 +37,13 @@ class XMLParser {
                 var published: String? = null
                 var updated: String? = null
                 var summary: String? = null
+                var link:String?=null
                 while (parser.next() != XmlPullParser.END_TAG) {
                     if (parser.eventType != XmlPullParser.START_TAG) {
                         continue
                     }
                     when (parser.name) {
+                        "id" -> link = readTag(parser,"id")
                         "title" -> title = readTag(parser,"title")
                        "re:rank" -> rank = readRank(parser)
                         "published" -> published = readTag(parser,"published")
@@ -62,7 +64,7 @@ class XMLParser {
                         else -> skip(parser)
                     }
                 }
-                qDetails.add(Details(rank,title,author,published,updated,summary))
+                qDetails.add(Details(link,rank,title,author,published,updated,summary))
             } else {
                 skip(parser)
             }

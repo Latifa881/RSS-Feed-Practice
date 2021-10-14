@@ -10,6 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.dialogue_view.view.*
 import kotlinx.android.synthetic.main.item_row.view.*
 import kotlinx.android.synthetic.main.item_row.view.tvTitle
+import androidx.core.content.ContextCompat.startActivity
+
+import android.content.Intent
+import android.net.Uri
+import androidx.core.content.ContextCompat
+
 
 class RecyclerViewAdapter ( val details: ArrayList<Details>) :
     RecyclerView.Adapter<RecyclerViewAdapter.ItemViewHolder>() {
@@ -35,7 +41,7 @@ class RecyclerViewAdapter ( val details: ArrayList<Details>) :
                 val dialogView = LayoutInflater.from(context).inflate(R.layout.dialogue_view, null)
                 builder.setView(dialogView)
                 dialogView.tvTitle.text=data.title
-                dialogView.tvAuthor.text=data.author
+                dialogView.tvAuthor.text=data.author.toString().capitalize()
                 dialogView.tvRank.text=data.rank.toString()
                 dialogView.tvPublish.text=data.published
                 dialogView.tvUpdate.text=data.updated
@@ -51,6 +57,16 @@ class RecyclerViewAdapter ( val details: ArrayList<Details>) :
                         dialogView.scrollable.visibility=View.VISIBLE
                     }
                 }
+                try {
+                    dialogView.ivLink.setOnClickListener {
+                        var  uri = Uri.parse(data.link)
+                       val intent =  Intent(Intent.ACTION_VIEW, uri);
+                        context.startActivity(intent)
+                    }
+                }catch (e:Exception){
+
+                }
+
 
                 // Create the AlertDialog
                 val alertDialog: AlertDialog = builder.create()
